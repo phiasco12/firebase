@@ -11,7 +11,8 @@ buildscript {
     }
 }
 repositories {
-@@ -23,7 +24,5 @@ dependencies {
+    maven {
+        url "https://maven.google.com"
     }
 }
 
