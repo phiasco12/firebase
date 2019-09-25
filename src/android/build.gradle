@@ -23,8 +23,8 @@ dependencies {
     }
 }
 
-cdvPluginPostBuildExtras.add({
+
 	
 apply plugin: com.google.gms.googleservices.GoogleServicesPlugin
 apply plugin: com.crashlytics.tools.gradle.CrashlyticsPlugin
-})
+
