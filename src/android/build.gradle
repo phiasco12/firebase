@@ -1,28 +1,14 @@
 buildscript {
     repositories {
+        maven { url "https://maven.google.com" }
         jcenter()
-        maven { url 'https://maven.fabric.io/public' }
+        mavenLocal()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:+'
         classpath 'com.google.gms:google-services:+'
-        classpath 'io.fabric.tools:gradle:+'
     }
 }
-repositories {
-    mavenCentral()
-    maven {
-        url "https://maven.google.com"
-    }
-}
-
-dependencies {
-    compile 'me.leolin:ShortcutBadger:1.1.4@aar'
-    compile 'com.google.firebase:firebase-auth:+'
-    compile('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
-       transitive = true
-    }
-}
-
+// apply plugin: 'com.google.gms.google-services'
+// class must be used instead of id(string) to be able to apply plugin from non-root gradle file
 apply plugin: com.google.gms.googleservices.GoogleServicesPlugin
-apply plugin: com.crashlytics.tools.gradle.CrashlyticsPlugin
