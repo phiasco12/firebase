@@ -1,34 +1,33 @@
 buildscript {
     repositories {
         jcenter()
-        google()
-        maven {
-            url 'https://maven.fabric.io/public'
-        }
-        //  Add this to your project 
-        maven { url 'https://dl.bintray.com/android/android-tools' }
+        mavenCentral()
+		google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
-        classpath 'com.google.gms:google-services:4.2.0'
-
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        // These docs use an open ended version so that our plugin
-        // can be updated quickly in response to Android tooling updates
-
-        // We recommend changing it to the latest version from our changelog:
-        // https://docs.fabric.io/android/changelog.html#fabric-gradle-plugin
-        classpath 'io.fabric.tools:gradle:1.27.0'
+        classpath 'com.android.tools.build:gradle:+'
+        classpath 'com.google.gms: google-services: 4.2.0'
+    }
+}
+repositories {
+    mavenCentral()
+    maven {
+        url "https://maven.google.com"
+    }
+	    maven {
+		url "https://dl.bintray.com/android/android-tools"
     }
 }
 
-allprojects {
-    repositories {
-        jcenter()
-        maven {
-            url 'https://maven.google.com/'
-        }
-        google()
+dependencies {
+    compile 'me.leolin:ShortcutBadger:1.1.4@aar'
+    compile 'com.google.firebase:firebase-auth:+'
+    compile('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
+       transitive = true
     }
 }
+
+cdvPluginPostBuildExtras.add({
+    apply plugin: 'com.google.gms.google-services'
+    apply plugin: 'io.fabric'
+})
